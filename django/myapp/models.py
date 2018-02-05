@@ -24,12 +24,12 @@ class Person(models.Model):
         ('M', 'Medium'),
         ('L', 'Large'),
     )
-    name = models.CharField(max_length=60)
+    name = models.CharField('my lovely name', max_length=60, primary_key=True)
     shirt_size = models.CharField(max_length=1, choices=SHIRT_SIZES)
 
 
     def __str__(self):
-        return '{} (PK: {}, 셔츠 사이즈: {}'.format(
+        return '{} (PK: {}, 셔츠 사이즈: {})'.format(
             self.name,
             self.pk,
             self.get_shirt_size_display(),
