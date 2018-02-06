@@ -14,6 +14,7 @@ from .models import (
     Post, User, PostLike,
     # self
     FacebookUser,
+    TwitterUser, Relation
 )
 
 
@@ -26,3 +27,5 @@ admin.site.register(PostLike)
 admin.site.register(User)
 
 admin.site.register(FacebookUser)
+admin.site.register(TwitterUser)
+admin.site.register(Relation)
