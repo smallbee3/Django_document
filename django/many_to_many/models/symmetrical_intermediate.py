@@ -45,6 +45,33 @@ class TwitterUser(models.Model):
         return following_users
 
 
+    def followers(self):
+        pk_list = self.relations_by_to_user.filter(type='f').values_list('from_user', flat=True)
+        return TwitterUser.objects.filter(pk__in=pk_list)
+
+
+    # @property
+    def is_followee(self, to_user):
+
+        following_pk_list = to_user.relations_by_from_user.filter(type='f').values_list('to_user', flat=True)
+        if self.pk in following_pk_list:
+            return True
+        else:
+            return False
+
+        # return self.following.filter(pk=to_user.pk).exist()
+
+
+    # @property
+    def is_following(self, from_user):
+
+        following_pk_list = self.relations_by_from_user.filter(type='f').values_list('to_user', flat=True)
+        if from_user.pk in following_pk_list:
+            return True
+        else:
+            return False
+
+
     def follow(self, to_user):
         self.relations_by_from_user.filter(to_user=to_user).delete()
         self.relations_by_from_user.create(
