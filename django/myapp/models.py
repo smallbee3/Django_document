@@ -24,11 +24,16 @@ class Person(models.Model):
         ('M', 'Medium'),
         ('L', 'Large'),
     )
-    name = models.CharField('my lovely name', max_length=60, primary_key=True)
+    name = models.CharField('my lovely name', max_length=60)
+    nickname = models.CharField(
+        max_length=30,
+        unique=True,    # -> 해당 값은 중복이 안됨. 고유한 값을 가져야함.
+    )
     shirt_size = models.CharField(max_length=1, choices=SHIRT_SIZES)
 
 
     def __str__(self):
+        # 이한영 (PK: 1, 셔츠 사이즈: Medium) 되도록 출력
         return '{} (PK: {}, 셔츠 사이즈: {})'.format(
             self.name,
             self.pk,

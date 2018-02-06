@@ -7,6 +7,6 @@ admin.site.register(Car)
 
 admin.site.register(Person)
 
-admin.site.register(Type)
-admin.site.register(Pokemon)
+# admin.site.register(Type)
+# admin.site.register(Pokemon)
 

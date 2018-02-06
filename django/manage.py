@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# 이 환경 안에 있는 python을 쓰겠다.
+
 import os
 import sys
 
