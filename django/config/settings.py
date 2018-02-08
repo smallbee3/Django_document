@@ -39,18 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Thirdparty App
-    # 'django_extensions',
+    'django_extensions',
 
 
     # Custom App
     'myapp',
-    'foreignkey',
-    'many_to_many',
-    'one_to_one',
+    'relations.foreignkey.apps.ForeignkeyConfig',
+    'relations.many_to_many.apps.ManyToManyConfig',
+    'relations.one_to_one.apps.OneToOneConfig',
 
     # Package
-    'inheritance.abstract_base_classes'
-
+    'inheritance.abstract_base_classes.apps.AbstractBaseClassesConfig',
+    'inheritance.rel.apps.RelConfig',
 ]
 
 MIDDLEWARE = [

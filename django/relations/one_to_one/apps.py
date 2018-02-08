@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class OneToOneConfig(AppConfig):
-    name = 'one_to_one'
+    name = 'relations.one_to_one'

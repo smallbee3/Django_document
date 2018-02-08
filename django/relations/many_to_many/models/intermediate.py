@@ -89,9 +89,18 @@ class PostLike(models.Model):
             name=self.user.name,
             # created_date=self.created_date
 
-            date=datetime.strftime(
-                # timezone.make_naive(self.created_date),
-                timezone.localtime(self.created_date), # ->  tzinfo값으로 Asia/Seoul을 가짐.
-                '%Y.%m.%d'),
+            #
+            # 표기법 1 (make_naive or localtime)
+            # date=datetime.strftime(
+            #     # timezone.make_naive(self.created_date),
+            #     timezone.localtime(self.created_date), # ->  tzinfo값으로 Asia/Seoul을 가짐.
+            #     '%Y.%m.%d'),
+
+            # 표기법 2
+            date = timezone.localtime(self.created_date).strftime('%Y.%m.%d')
+
+            # date = self.created_date.strftime('%Y.%m.%d')
+            # UTC 기준임.
+
         )
 
