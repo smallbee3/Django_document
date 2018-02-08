@@ -10,6 +10,16 @@ __all__ = (
 )
 
 
+class User(models.Model):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name_plural = 'intermediate - Users'
+
+    def __str__(self):
+        return self.name
+
+
 
 # Extra fields on many-to-many relationships (Basic)
 class Post(models.Model):
@@ -26,18 +36,21 @@ class Post(models.Model):
         related_name='like_posts',
     )
 
+    class Meta:
+        verbose_name_plural = 'intermediate - Post'
+
+
     def __str__(self):
         return self.title
 
 
-class User(models.Model):
-    name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
-
 
 class PostLike(models.Model):
+
+
+    class Meta:
+        verbose_name_plural = 'intermediate - PostLike'
+
     post = models.ForeignKey(
         Post,
         on_delete=models.CASCADE,

@@ -1,11 +1,13 @@
 from django.db import models
 
+
 class Musician(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     instrument = models.CharField(max_length=100, blank=True)
 
-
+    def __str__(self):
+        return f'{self.last_name}{self.first_name}'
 
 
 class Album(models.Model):
@@ -17,6 +19,9 @@ class Album(models.Model):
     )
     num_stars = models.IntegerField()
 
+    def __str__(self):
+        return f'{self.artist}의 앨범: {self.name}'
+
 
 class Person(models.Model):
     SHIRT_SIZES = (
@@ -24,7 +29,7 @@ class Person(models.Model):
         ('M', 'Medium'),
         ('L', 'Large'),
     )
-    name = models.CharField('my lovely name', max_length=60)
+    name = models.CharField(max_length=60)
     # nickname = models.CharField(
     #     max_length=30,
     #     unique=True,    # -> 해당 값은 중복이 안됨. 고유한 값을 가져야함.

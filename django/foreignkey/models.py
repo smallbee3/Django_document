@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# verbose_name지정
+# verbose_name지정 / class Meta 에 지정할 수도 있음.
 
 
 class Car(models.Model):
@@ -11,7 +11,7 @@ class Car(models.Model):
         on_delete=models.CASCADE,
         verbose_name='제조사',                                 # verbose_name
     )
-    name = models.CharField('모델명', max_length=60)           # verbose_name
+    name = models.CharField('모델명', max_length=60)            # verbose_name
 
     def __str__(self):
         # 현대 아반떼 <- 와 같이 출력되도록 처리
@@ -43,10 +43,12 @@ class Person(models.Model):
         blank=True,
     )
 
+    ################## 선생님이 존재할 경우에 #######################
     def __str__(self):
-        if self.teacher: # -> 선생님이 존재할 경우에
+        if self.teacher:
             return f'{self.name} (teacher: {self.teacher})'
         return f'{self.name}'
+
 
 
 

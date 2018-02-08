@@ -38,9 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Thirdparty App
+    # 'django_extensions',
+
+
+    # Custom App
     'myapp',
     'foreignkey',
     'many_to_many',
+    'one_to_one',
+
+    # Package
+    'inheritance.abstract_base_classes'
+
 ]
 
 MIDDLEWARE = [
