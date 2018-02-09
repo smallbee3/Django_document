@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'inheritance.abstract_base_classes.apps.AbstractBaseClassesConfig',
     'inheritance.rel.apps.RelConfig',
     'inheritance.multi_table.apps.MultiTableConfig',
-    'inheritance.proxy'
+    'inheritance.proxy.apps.ProxyConfig'
 
 ]
 
