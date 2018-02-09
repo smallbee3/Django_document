@@ -11,7 +11,14 @@ class Student(CommonInfo):
     home_group = models.CharField(max_length=5)
 
 
+
+
+
+
+
+
 # Be careful with related_name and related_query_name
+
 class Other(models.Model):
     pass
 

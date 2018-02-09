@@ -44,14 +44,17 @@ INSTALLED_APPS = [
 
     # Custom App
     'myapp',
+
+    # Package
     'relations.foreignkey.apps.ForeignkeyConfig',
     'relations.many_to_many.apps.ManyToManyConfig',
     'relations.one_to_one.apps.OneToOneConfig',
 
-    # Package
     'inheritance.abstract_base_classes.apps.AbstractBaseClassesConfig',
     'inheritance.rel.apps.RelConfig',
     'inheritance.multi_table.apps.MultiTableConfig',
+    'inheritance.proxy'
+
 ]
 
 MIDDLEWARE = [
