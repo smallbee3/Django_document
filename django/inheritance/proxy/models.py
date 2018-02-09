@@ -12,11 +12,12 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
-
+####################################################
+# 커스텀 매니저
 class AdminManager(Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_admin=True)
-
+###################################################
 
 class Admin(User):
     objects = AdminManager()
@@ -32,10 +33,15 @@ class Admin(User):
     def drop(user):
         user.delete()
 
+# 여기서 Manager와 커스텀 매니저인 Admin
 
+
+####################################################
+# 커스텀 매니저
 class StaffManager(Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_staff=True)
+###################################################
 
 
 class Staff(User):
