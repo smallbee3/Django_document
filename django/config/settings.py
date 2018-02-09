@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # Package
     'inheritance.abstract_base_classes.apps.AbstractBaseClassesConfig',
     'inheritance.rel.apps.RelConfig',
+    'inheritance.multi_table.apps.MultiTableConfig',
 ]
 
 MIDDLEWARE = [
