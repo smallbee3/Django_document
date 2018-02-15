@@ -22,6 +22,7 @@ class Topping(models.Model):
     def __str__(self):
         return self.name
 
+
 class Pizza(models.Model):
     name = models.CharField(max_length=50)
     toppings = models.ManyToManyField(Topping)

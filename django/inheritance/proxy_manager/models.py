@@ -8,13 +8,13 @@ class Person(models.Model):
     def __str__(self):
         return self.name
 
-###########################################
-# 커스텀 매니저
+####################################################
+# 커스텀 매니저 생성 클래스
 class NewManager(Manager):
     def get_queryset(self):
         print('NewManager get_queryset')
         return super().get_queryset()
-###########################################
+####################################################
 
 
 # 커스텀 매니저를 직접 자신의 속성으로 갖는 MyPerson1

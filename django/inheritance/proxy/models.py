@@ -13,14 +13,14 @@ class User(models.Model):
         return self.name
 
 ####################################################
-# 커스텀 매니저
+# 커스텀 매니저 생성 클래스
 class AdminManager(Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_admin=True)
 ###################################################
 
 class Admin(User):
-    objects = AdminManager()
+    secondary = AdminManager()
 
     class Meta:
         proxy = True
@@ -37,7 +37,7 @@ class Admin(User):
 
 
 ####################################################
-# 커스텀 매니저
+# 커스텀 매니저 생성 클래스
 class StaffManager(Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_staff=True)
@@ -45,7 +45,7 @@ class StaffManager(Manager):
 
 
 class Staff(User):
-    objects = StaffManager()
+    secondary = StaffManager()
     class Meta:
         proxy = True
 

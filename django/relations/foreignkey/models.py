@@ -10,6 +10,8 @@ class Car(models.Model):
         'Manufacturer', # -> 아직 정의되지 않은 모델을 참조하고 싶을 때는 문자열로 하면 알아서 찾아서 반영시킴.
         on_delete=models.CASCADE,
         verbose_name='제조사',                                 # verbose_name
+        # blank=True,
+        # null=True
     )
     name = models.CharField('모델명', max_length=60)            # verbose_name
 

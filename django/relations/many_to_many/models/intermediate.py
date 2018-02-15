@@ -20,7 +20,6 @@ class User(models.Model):
         return self.name
 
 
-
 # Extra fields on many-to-many relationships (Basic)
 class Post(models.Model):
     title = models.CharField(max_length=50)
@@ -44,9 +43,7 @@ class Post(models.Model):
         return self.title
 
 
-
 class PostLike(models.Model):
-
 
     class Meta:
         verbose_name_plural = 'intermediate - PostLike'
@@ -59,7 +56,6 @@ class PostLike(models.Model):
     #     Post,                         # 그래도 또 써야되면..
     #     on_delete=models.CASCADE,
     # )
-
 
     user = models.ForeignKey(
         User,
@@ -101,6 +97,4 @@ class PostLike(models.Model):
 
             # date = self.created_date.strftime('%Y.%m.%d')
             # UTC 기준임.
-
         )
-

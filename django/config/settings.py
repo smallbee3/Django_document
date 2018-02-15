@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     # Custom App
     'myapp',
 
-    # Package
+    # Models
     'relations.foreignkey.apps.ForeignkeyConfig',
     'relations.many_to_many.apps.ManyToManyConfig',
     'relations.one_to_one.apps.OneToOneConfig',
@@ -57,6 +57,11 @@ INSTALLED_APPS = [
     'inheritance.custom_manager.apps.CustomManagerConfig',
     'inheritance.proxy_manager.apps.ProxyManagerConfig',
     'inheritance.multiple_inheritance.apps.MultipleInheritanceConfig',
+
+
+    # Queries
+    'queries.webblog.apps.WebblogConfig'
+
 ]
 
 MIDDLEWARE = [
