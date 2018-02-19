@@ -60,8 +60,8 @@ INSTALLED_APPS = [
 
 
     # Queries
-    'queries.webblog.apps.WebblogConfig'
-
+    'queries.webblog.apps.WebblogConfig',
+    'weblog.apps.WeblogConfig',
 ]
 
 MIDDLEWARE = [

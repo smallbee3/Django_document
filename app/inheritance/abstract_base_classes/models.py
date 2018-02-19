@@ -12,11 +12,6 @@ class Student(CommonInfo):
 
 
 
-
-
-
-
-
 # Be careful with related_name and related_query_name
 
 class Other(models.Model):
@@ -37,8 +32,14 @@ class Base(models.Model):
 
 
 class ChildA(Base):
-    pass
+    name = models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class ChildB(Base):
-    pass
+    name = models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return self.name

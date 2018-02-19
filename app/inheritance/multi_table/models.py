@@ -19,3 +19,12 @@ class Restaurant(Place):
 
     def __str__(self):
         return f'Restaurant {self.name}'
+
+# Adding related_name to the customers field
+# as follows would resolve the error: models.ManyToManyField(Place, related_name='provider').
+
+class Supplier(Place):
+    customers = models.ManyToManyField(Place, related_name='provider')
+
+    def __str__(self):
+        return f'Supplier {self.customers} of {self.name}'
