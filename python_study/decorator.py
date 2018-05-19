@@ -30,6 +30,7 @@
 # 2) 클래스형식의 데코레이터
 #   - __init__ 메소드가 전달된 '함수' 인자를 받고,
 #     __call__ 메소드가 wrapper_function 역할을 하는 것.
+#     (__call__ : 클래스의 객체가 함수처럼 호출되면 실행되는 함수이다.)
 
 class DecoratorClass:  #1
     def __init__(self, original_function):
@@ -41,6 +42,8 @@ class DecoratorClass:  #1
 
     def test(self):
         print('테스트')
+
+    name = '이름'
 
 
 # @DecoratorClass  #2
@@ -70,3 +73,7 @@ display.test()
 # 그 값을 받은 변수는 '인스턴스' 이면서 동시에 '함수'가 되는
 # 기괴한 현상이...
 
+
+
+print(display.name)
+print(DecoratorClass.name)
