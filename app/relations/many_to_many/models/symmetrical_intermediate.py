@@ -101,7 +101,6 @@ class TwitterUser(models.Model):
         block_users = TwitterUser.objects.filter(pk__in=block_pk_list)
         return block_users
 
-
     # @property -> 함수가 인자를 받기 때문에 안됨
     def is_following(self, to_user):
     # def is_followee(self, to_user): # -> 말이 너무 헷갈림.
@@ -110,6 +109,8 @@ class TwitterUser(models.Model):
         :param to_user:
         :return:
         """
+
+        # 3/11일날 1달 지나서 풀었는데 풀이 방법이 똑같음.. ;;
         # following_pk_list = self.from_user_set.filter(type='f').values_list('to_user', flat=True)
         # if to_user.pk in following_pk_list:
         #     return True
@@ -134,8 +135,6 @@ class TwitterUser(models.Model):
         # else:
         #     return False
         return self.followers.filter(pk=from_user.pk).exists()
-
-
 
     def follow(self, to_user):
         """
@@ -210,7 +209,6 @@ class Relation(models.Model):
 
     def __str__(self):
         return f"'{self.from_user.name}'가 '{self.to_user.name}'를 '{self.get_type_display()}'함"
-
 
     class Meta:
         verbose_name_plural = 'symmetrical_intermediate - Relation'

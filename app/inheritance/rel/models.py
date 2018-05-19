@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Person(models.Model):
     name = models.CharField(max_length=50)
 
@@ -16,7 +17,12 @@ class Item(models.Model):
         # 역참조 및 역참조쿼리를 사용할 수 없다.
 
         # related_name='items',
-        # related_query_name='item',
+
+        # related_query_name의 경우 컴파일에러를 파이참이 발생시키지 않는데
+        # 사실 related_name = 'items'처럼 문제가 되며,
+        # 나중에 지정된 related_query_name으로 뒤집어 쓰게 된다.
+
+        related_query_name='item',
 
         related_name='%(app_label)s_%(class)ss',
         # related_query_name='%(app_label)s_%(class)s',
@@ -25,6 +31,7 @@ class Item(models.Model):
 
     class Meta:
         abstract = True
+
 
 class Fruit(Item):
     name = models.CharField(max_length=10)

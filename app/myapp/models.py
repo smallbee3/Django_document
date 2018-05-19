@@ -39,8 +39,9 @@ class Person(models.Model):
 
     def __str__(self):
         # 이한영 (PK: 1, 셔츠 사이즈: Medium) 되도록 출력
-        return '{} (PK: {}, 셔츠 사이즈: {})'.format(
+        return '{} (PK: {}, 셔츠 사이즈: {} {})'.format(
             self.name,
             self.pk,
             self.get_shirt_size_display(),
+            self.shirt_size,
         )

@@ -33,7 +33,7 @@ class FacebookUser(models.Model):
         # list comprehension 사용
         friends_string = ', '.join([friend.name for friend in self.friends.all()])
 
-        # 방법 3 - 쿼리차원에서  효율적으로 가져오는 방법 (네임만 필요할 때)
+        # 방법 3 - 쿼리차원에서 효율적으로 가져오는 방법 (네임만 필요할 때)
         # Manager의 values_list를 사용
         #   DB에서 모든 friends의 'name'필드 값만 가져옴
         friends_string = ', '.join(self.friends.values_list('name', flat=True))

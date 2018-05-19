@@ -19,12 +19,12 @@ class AdminManager(Manager):
         return super().get_queryset().filter(is_admin=True)
 ###################################################
 
+
 class Admin(User):
     secondary = AdminManager()
 
     class Meta:
         proxy = True
-
 
     def __str__(self):
         return f'{self.name} (관리자)'
@@ -46,6 +46,7 @@ class StaffManager(Manager):
 
 class Staff(User):
     secondary = StaffManager()
+    # weapon = models.CharField(max_length=50)
     class Meta:
         proxy = True
 

@@ -6,8 +6,8 @@ from django.db import models
 
 class Car(models.Model):
     manufacturer = models.ForeignKey(
-
-        'Manufacturer', # -> 아직 정의되지 않은 모델을 참조하고 싶을 때는 문자열로 하면 알아서 찾아서 반영시킴.
+        'Manufacturer',
+        # -> 아직 정의되지 않은 모델을 참조하고 싶을 때는 문자열로 하면 알아서 찾아서 반영시킴.
         on_delete=models.CASCADE,
         verbose_name='제조사',                                 # verbose_name
         # blank=True,
@@ -19,15 +19,12 @@ class Car(models.Model):
         # 현대 아반떼 <- 와 같이 출력되도록 처리
         return f'{self.manufacturer.name} {self.name}'
 
+
 class Manufacturer(models.Model):
     name = models.CharField('제조사명', max_length=50)         # verbose_name
 
     def __str__(self):
         return self.name
-
-
-
-
 
 
 class Person(models.Model):
@@ -39,21 +36,17 @@ class Person(models.Model):
     # 2. 비어있어도 무관,
     # 3. 연결된 객체가 삭제되면 함께 삭제되지 않고 해당 필드를 비움
     teacher = models.ForeignKey(
-        'self',                                             # <- M-t-o : recursive
+        'self',                    # <- M-t-o : recursive
         on_delete=models.SET_NULL, # 선생이 삭제되었을 때 어떻게 할 것인지.
         null=True,                 # -> models.CASCADE로 바꾸면 데이터베이스에 변동이가기때문에 pmmm해야됨.
         blank=True,
     )
 
-    ################## 선생님이 존재할 경우에 #######################
     def __str__(self):
+        # 선생님이 존재할 경우에
         if self.teacher:
             return f'{self.name} (teacher: {self.teacher})'
         return f'{self.name}'
-
-
-
-
 
 
 

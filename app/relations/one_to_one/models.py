@@ -13,7 +13,7 @@ class Place(models.Model):
     address = models.CharField(max_length=80)
 
     def __str__(self):
-        return "%s the place" % self.name
+        return "%s the place in %s" % (self.name, self.address)
 
 
 class Restaurant(models.Model):
@@ -21,6 +21,7 @@ class Restaurant(models.Model):
         Place,
         on_delete=models.CASCADE,
         primary_key=True,
+        related_name='resto'
     )
     serves_hot_dogs = models.BooleanField(default=False)
     serves_pizza = models.BooleanField(default=False)

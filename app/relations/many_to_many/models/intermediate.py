@@ -38,7 +38,6 @@ class Post(models.Model):
     class Meta:
         verbose_name_plural = 'intermediate - Post'
 
-
     def __str__(self):
         return self.title
 
@@ -70,7 +69,6 @@ class PostLike(models.Model):
     # )
     # 굳이 필요허면 나중에 배우자
 
-
     created_date = models.DateTimeField(
         auto_now_add=True  ## 심지어 auto로 자동으로 들어가는데도 튜플로 언패킹 허용이 안됨.
     )                       # 중개모델이 있는 m-t-m에서 뭘 만든다하면 무조건 중개모델에서 create 해야함.
@@ -93,7 +91,7 @@ class PostLike(models.Model):
             #     '%Y.%m.%d'),
 
             # 표기법 2
-            date = timezone.localtime(self.created_date).strftime('%Y.%m.%d')
+            date=timezone.localtime(self.created_date).strftime('%Y.%m.%d')
 
             # date = self.created_date.strftime('%Y.%m.%d')
             # UTC 기준임.
