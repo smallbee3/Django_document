@@ -7,8 +7,9 @@ __all__ = (
 
 class InstagramUser(models.Model):
     name = models.CharField(max_length=50)
+
+    # 팔로잉만 있고 팔로워가 없는 이유 : 인스타그램에서 누군가를 팔로잉하는것밖에 없음.
     following = models.ManyToManyField(
-    # -> 팔로잉만 있고 팔로워가 없는 이유 : 인스타그램에서 누군가를 팔로잉하는것밖에 없음.
         'self',
         # 대칭관계가 아님 -> 팔로잉만 하는 인스타그램 같은 서비스 / 페이스북과 다름
         symmetrical=False,
@@ -20,7 +21,17 @@ class InstagramUser(models.Model):
         verbose_name_plural = 'Symmetrical - InstagramUser'
 
     def __str__(self):
-        return self.name
+
+        return "{} following({}) followers({})".format(
+            self.name,
+
+            # following하는 사람들 명단
+            ', '.join(self.following.values_list('name', flat=True)),
+
+            # follower들 명단
+            ', '.join(self.followers.all().values_list('name', flat=True)),
+        )
+
 
     # def followers(self):
     #     # 자신을 following하고 있는 사람들을 리턴
