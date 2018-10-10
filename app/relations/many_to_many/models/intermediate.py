@@ -32,7 +32,7 @@ class Post(models.Model):
         # 자동 생성되는 역방향 매니저 이름인 post_set대신
         #   like_posts라는 이름을 사용하도록 한다
         # ex) user2.like_posts.all()
-        related_name='like_posts',
+        # related_name='like_posts',
     )
 
     class Meta:
@@ -88,11 +88,15 @@ class PostLike(models.Model):
             # date=datetime.strftime(
             #     # timezone.make_naive(self.created_date),
             #     timezone.localtime(self.created_date), # ->  tzinfo값으로 Asia/Seoul을 가짐.
-            #     '%Y.%m.%d'),
+            #     # '%Y.%m.%d'),
+            #     '%d % d %Y . %m  .  %d'),
 
             # 표기법 2
-            date=timezone.localtime(self.created_date).strftime('%Y.%m.%d')
+            # date=timezone.localtime(self.created_date).strftime('%Y.%m.%d')
+            date=timezone.localtime(self.created_date).strftime('%d %d % d %Y.%m.%d')
+            # date=timezone.localtime(self.created_date)
 
             # date = self.created_date.strftime('%Y.%m.%d')
+            # date = self.created_date
             # UTC 기준임.
         )

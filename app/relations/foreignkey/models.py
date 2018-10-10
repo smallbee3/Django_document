@@ -51,7 +51,6 @@ class Person(models.Model):
 
 
 
-
 class Type(models.Model):
     name = models.CharField(primary_key=True, max_length=60)
 

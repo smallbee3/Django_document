@@ -31,5 +31,4 @@ class Pizza(models.Model):
         verbose_name_plural = 'Basic - Pizzas'
 
     def __str__(self):
-        return f'{self.name} {self.toppings.values("pk")}'
-        # return self.name
+        return f'{self.name} {self.toppings.values_list("pk", flat=True)}'
