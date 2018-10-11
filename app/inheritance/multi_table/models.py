@@ -24,22 +24,33 @@ class Restaurant(Place):
     serves_pizza = models.BooleanField(default=False)
 
     # 상원님을 위한 특별 예제 2 (사실 이 부분 Doc에 설명이 있음)
-    # https://docs.djangoproject.com/en/2.0/topics/db/models/#inheritance-and-reverse-relations
+    # https://docs.djangoproject.com/en/2.1/topics/db/models/#inheritance-and-reverse-relations
 
     nearby_places = models.ManyToManyField(
         Place,
+        related_name='near_restaurant',
         related_query_name='near_restaurant'
     )
 
     def __str__(self):
         return f'Restaurant {self.name}'
 
+
 # Adding related_name to the customers field
 # as follows would resolve the error: models.ManyToManyField(Place, related_name='provider').
 
-
 class Supplier(Place):
-    customers = models.ManyToManyField(Place, related_name='provider')
+    customers = models.ManyToManyField(
+        Place,
+        # related_name='provider'
+        related_query_name='provider'
+    )
+
+    place_ptr123 = models.OneToOneField(
+        Place,
+        on_delete=models.CASCADE,
+        parent_link=True,
+    )
 
     def __str__(self):
         return f'Supplier {self.customers} of {self.name}'

@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     # Thirdparty App
     'django_extensions',
 
-
     # Custom App
     'myapp',
 
@@ -49,7 +48,6 @@ INSTALLED_APPS = [
     'relations.foreignkey.apps.ForeignkeyConfig',
     'relations.many_to_many.apps.ManyToManyConfig',
     'relations.one_to_one.apps.OneToOneConfig',
-
     'inheritance.abstract_base_classes.apps.AbstractBaseClassesConfig',
     'inheritance.rel.apps.RelConfig',
     'inheritance.multi_table.apps.MultiTableConfig',
@@ -58,10 +56,9 @@ INSTALLED_APPS = [
     'inheritance.proxy_manager.apps.ProxyManagerConfig',
     'inheritance.multiple_inheritance.apps.MultipleInheritanceConfig',
 
-
     # Queries
-    # 'queries.webblog.apps.WebblogConfig',
     'weblog.apps.WeblogConfig',
+    # 'queries.webblog.apps.WebblogConfig',
 ]
 
 MIDDLEWARE = [
