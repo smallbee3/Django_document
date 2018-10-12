@@ -8,12 +8,14 @@ class Person(models.Model):
     def __str__(self):
         return self.name
 
+
 ####################################################
 # 커스텀 매니저 생성 클래스
 class NewManager(Manager):
     def get_queryset(self):
         print('NewManager get_queryset')
         return super().get_queryset()
+
 ####################################################
 
 
@@ -23,6 +25,7 @@ class MyPerson1(Person):
 
     class Meta:
         proxy = True
+
 
 # --------------------------------------
 

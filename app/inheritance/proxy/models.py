@@ -12,11 +12,13 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
+
 ####################################################
 # 커스텀 매니저 생성 클래스
 class AdminManager(Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_admin=True)
+
 ###################################################
 
 
@@ -33,6 +35,7 @@ class Admin(User):
     def drop(user):
         user.delete()
 
+
 # 여기서 Manager와 커스텀 매니저인 Admin
 
 
@@ -41,11 +44,13 @@ class Admin(User):
 class StaffManager(Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_staff=True)
+
 ###################################################
 
 
 class Staff(User):
     secondary = StaffManager()
+
     # weapon = models.CharField(max_length=50)
     class Meta:
         proxy = True
