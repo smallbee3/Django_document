@@ -43,3 +43,15 @@ class ExtraManagerModel(models.Model):
 class MyPerson2(Person, ExtraManagerModel):
     class Meta:
         proxy = True
+
+
+class ExtraManagerModel2(models.Model):
+    secondary = NewManager()
+
+    # class Meta:
+    #     abstract = True
+
+
+class MyPerson3(ExtraManagerModel2):
+    class Meta:
+        proxy = True
