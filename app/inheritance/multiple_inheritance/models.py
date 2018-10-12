@@ -12,11 +12,29 @@ https://docs.djangoproject.com/en/2.0/topics/db/models/#specifying-the-parent-li
 """
 
 
+# (1) Use an explicit AutoField in the base models
+
+class Article(models.Model):
+    article_id = models.AutoField(primary_key=True)
+    ...
+
+
+class Book(models.Model):
+    book_id = models.AutoField(primary_key=True)
+    ...
+
+
+class BookReview(Book, Article):
+    pass
+
+
+# (2) Use a common ancestor to hold the AutoField
+
 class Piece(models.Model):
     pass
 
 
-class Article(Piece):
+class Article2(Piece):
     article_piece = models.OneToOneField(
         Piece,
         on_delete=models.CASCADE,
@@ -25,7 +43,7 @@ class Article(Piece):
     pass
 
 
-class Book(Piece):
+class Book2(Piece):
     book_piece = models.OneToOneField(
         Piece,
         on_delete=models.CASCADE,
@@ -34,5 +52,6 @@ class Book(Piece):
     pass
 
 
-class BookReview(Book, Article):
+# class BookReview(Article):
+class BookReview2(Book2, Article2):
     pass
